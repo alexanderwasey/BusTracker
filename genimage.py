@@ -26,7 +26,7 @@ def genimage(display, stoptimes, todisplay, height, width):
             
             if shown >= todisplay: 
                 break
-            draw.text((5,printheight), (str(time['serviceName']) + " " + time['destination'] + ": " + str(time['timeToLeave'])), display.BLACK, f1)
+            draw.text((5,printheight), (str(time['serviceName']) + " " + time['destination'] + ": " + ttl), display.BLACK, f1)
             printheight += 10
             shown += 1
           
