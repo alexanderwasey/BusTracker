@@ -15,14 +15,10 @@ def main():
     try: 
         stops = config['stops']
         toDisplay = config['toDisplay']
-        displayType = config['displayType']
     except:
         print('Error loading config')
         return
 
-    if displayType not in ['screen']:
-        print('displayType not valid in config')
-        return
     
     #Loop for displaying times 
     while True: 
@@ -35,13 +31,10 @@ def main():
             stoptime['name'] = stop['name']
             stopstimes.append(stoptime)
 
-        if (displayType == 'screen'):
-            print('Attempt to gen image')
-            img = genimage(inky_display, stopstimes, toDisplay, inky_display.HEIGHT, inky_display.WIDTH)
-            inky_display.set_image(img)
-            inky_display.show()
-        else:
-            print("Display type error type " + displayType + " not found")
+        print('Attempt to gen image')
+        img = genimage(inky_display, stopstimes, toDisplay, inky_display.HEIGHT, inky_display.WIDTH)
+        inky_display.set_image(img)
+        inky_display.show()
     
         time.sleep(30)
 

@@ -1,5 +1,4 @@
 {"toDisplay": 4, 
-"displayType": "screen", 
 "stops":[
   {"name": "Bruntsfield Place North", "IDs": [36237249]}, 
   {"name": "Bruntsfield Place South", "IDs": [36237252]}
