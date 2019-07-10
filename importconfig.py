@@ -4,7 +4,7 @@ import json
 def importconfig(): 
     config = {}
 
-    configfile = open("config.txt", "r")
+    configfile = open("/home/pi/BusTracker/config.txt", "r")
     configstring = configfile.read() 
 
     try:
