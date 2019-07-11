@@ -32,11 +32,11 @@ def main():
             stopstimes.append(stoptime)
 
         print('Attempt to gen image')
-        img = genimage(inky_display, stopstimes, toDisplay, inky_display.HEIGHT, inky_display.WIDTH)
+        img = genimage(inky_display, stopstimes, toDisplay)
         inky_display.set_image(img)
         inky_display.show()
     
-        time.sleep(30)
+        time.sleep(20)
 
 
 
