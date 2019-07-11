@@ -1,7 +1,7 @@
 from PIL import Image, ImageFont, ImageDraw
 from inky import InkyPHAT
 from font_fredoka_one import FredokaOne
-
+from acronym import acronym
 
 #Create the image to be displayed on the hat
 def genimage(display, stoptimes, todisplay):
@@ -11,7 +11,6 @@ def genimage(display, stoptimes, todisplay):
     #Load in the font
     f1 = ImageFont.truetype(FredokaOne,24)
     f2 = ImageFont.truetype(FredokaOne,16)
-    f3 = ImageFont.truetype(FredokaOne,14)
     w, h = f1.getsize("Test") 
 
     #Counts where we are printing from
@@ -33,16 +32,16 @@ def genimage(display, stoptimes, todisplay):
         draw.text((0,printheight), (str(time['serviceName'])), display.BLACK, f1)
         w, h = f1.getsize(str(time['serviceName']))
         printwidth = w
+        
+        #Check destination name isn't too long
+        destination = time['destination']
+        if (len(destination) > 14):
+                destination = acronym(destination)
 
-        #Print the service name in a smaller font
-        #Need to pick the smaller font based on the length of the destination name 
-        fs = f2
-        if (len(time['destination']) > 14):
-            fs = f3
 
-        fsheight = printheight + int(0.25*h)
-        draw.text((printwidth, fsheight), (" " + time['destination'] + ": "), display.BLACK, fs)
-        w, h = fs.getsize(" " + time['destination'] + ": ")
+        f2height = printheight + int(0.25*h)
+        draw.text((printwidth, f2height), (" " + destination + ": "), display.BLACK, f2)
+        w, h = f2.getsize(" " + destination + ": ")
         printwidth = w + printwidth  
 
         #Print the time to arrival
