@@ -16,16 +16,12 @@ def genimage(display, times):
     #Counts where we are printing from
     printheight = 0
 
-    shown = 0
     #Print the times 
     for time in times:
         ttl = str(time['timeToLeave'])
         if (ttl == "0"):
             ttl = "DUE"
             
-        if shown >= 4: 
-            break
-
         #Print the service number
         draw.text((0,printheight), (str(time['serviceName'])), display.BLACK, f1)
         w, h = f1.getsize(str(time['serviceName']))
@@ -47,6 +43,5 @@ def genimage(display, times):
         w, h = f1.getsize(ttl)
 
         printheight += h
-        shown += 1
           
     return img

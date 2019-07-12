@@ -24,6 +24,10 @@ def main():
         #Get the times for the stop 
         times = getstopsinfo(IDs)
 
+        #Ensure that no more than 4 times are in the list
+        if len(times) > 4: 
+            times = times[0:3]
+
 
         print('Attempt to gen image')
         img = genimage(inky_display, times)
