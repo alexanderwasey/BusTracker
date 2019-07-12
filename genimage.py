@@ -4,7 +4,7 @@ from font_fredoka_one import FredokaOne
 from acronym import acronym
 
 #Create the image to be displayed on the hat
-def genimage(display, stoptimes, todisplay):
+def genimage(display, times):
     img = Image.new("P", (display.WIDTH, display.HEIGHT))
     draw = ImageDraw.Draw(img)
     
@@ -15,17 +15,15 @@ def genimage(display, stoptimes, todisplay):
 
     #Counts where we are printing from
     printheight = 0
-    
-    stop = stoptimes[0]
 
     shown = 0
     #Print the times 
-    for time in stop['times']:
+    for time in times:
         ttl = str(time['timeToLeave'])
         if (ttl == "0"):
             ttl = "DUE"
             
-        if shown >= todisplay: 
+        if shown >= 4: 
             break
 
         #Print the service number

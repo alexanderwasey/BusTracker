@@ -13,8 +13,7 @@ def main():
     config = importconfig()
     
     try: 
-        stops = config['stops']
-        toDisplay = config['toDisplay']
+        IDs = config['IDs']
     except:
         print('Error loading config')
         return
@@ -22,17 +21,12 @@ def main():
     
     #Loop for displaying times 
     while True: 
-        #Will need to collect times for each stop and connect them with stop name to send to the display.
-        stopstimes = list()
-        for stop in stops: 
-            times = getstopsinfo(stop['IDs'])
-            stoptime = {}
-            stoptime['times'] = times 
-            stoptime['name'] = stop['name']
-            stopstimes.append(stoptime)
+        #Get the times for the stop 
+        times = getstopsinfo(IDs)
+
 
         print('Attempt to gen image')
-        img = genimage(inky_display, stopstimes, toDisplay)
+        img = genimage(inky_display, times)
         inky_display.set_image(img)
         inky_display.show()
     
