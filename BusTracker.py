@@ -28,7 +28,7 @@ def main():
 
         #Ensure that no more than 4 times are in the list
         if len(times) > 4: 
-            times = times[0:3]
+            times = times[0:4]
 
         #Only update the screen if the times have changed
         if (oldtimes != times):
