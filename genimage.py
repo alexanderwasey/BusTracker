@@ -9,7 +9,7 @@ def genimage(display, times):
     draw = ImageDraw.Draw(img)
     
     #Load in the font
-    f1 = ImageFont.truetype(FredokaOne,24)
+    f1 = ImageFont.truetype(FredokaOne,25)
     f2 = ImageFont.truetype(FredokaOne,16)
     w, h = f1.getsize("Test") 
 
