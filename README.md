@@ -3,4 +3,4 @@
 
 Requires an InkyPHAT with all the relevant libraries installed.
 
-Edit config.txt for the bus stops you require
+Edit defaultconfig.txt for the bus stops you require, and rename to config.txt
