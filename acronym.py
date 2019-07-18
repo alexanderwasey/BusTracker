@@ -12,7 +12,7 @@ def acronym(input):
             if i < 0:
                 break
             elif output[i] == ' ':
-                initials += output[i+1]
+                initials = output[i+1] + initials
                 output = output[:-1]
                 break
             else: 
