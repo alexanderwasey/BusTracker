@@ -4,7 +4,7 @@ from font_fredoka_one import FredokaOne
 from acronym import acronym
 
 #Create the image to be displayed on the hat
-def genimage(display, times):
+def gensingleimage(display, times):
     img = Image.new("P", (display.WIDTH, display.HEIGHT))
     draw = ImageDraw.Draw(img)
     
