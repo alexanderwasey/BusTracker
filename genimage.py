@@ -11,39 +11,9 @@ def gensingleimage(display, times):
     #Load in the font
     f1 = ImageFont.truetype(FredokaOne,25)
     f2 = ImageFont.truetype(FredokaOne,16)
-    w, h = f1.getsize("Test") 
 
-    #Counts where we are printing from
-    printheight = 0
+    gentimes(0, draw, display, times, f1, f2)
 
-    #Print the times 
-    for time in times:
-        ttl = str(time['timeToLeave'])
-        if (ttl == "0"):
-            ttl = "DUE"
-            
-        #Print the service number
-        draw.text((0,printheight), (str(time['serviceName'])), display.BLACK, f1)
-        w, h = f1.getsize(str(time['serviceName']))
-        printwidth = w
-        
-        #Check destination name isn't too long
-        destination = time['destination']
-        if (len(destination) > 14):
-                destination = acronym(destination)
-
-
-        f2height = printheight + int(0.25*h)
-        draw.text((printwidth, f2height), (" " + destination + ": "), display.BLACK, f2)
-        w, h = f2.getsize(" " + destination + ": ")
-        printwidth = w + printwidth  
-
-        #Print the time to arrival
-        draw.text((printwidth, printheight),ttl, display.BLACK, f1)
-        w, h = f1.getsize(ttl)
-
-        printheight += h
-          
     return img
 
 def genmultiimage(display, name, times):
@@ -55,14 +25,15 @@ def genmultiimage(display, name, times):
     f2 = ImageFont.truetype(FredokaOne,16)
     w, h = f1.getsize("Test") 
 
-    #Counts where we are printing from
-    printheight = 0
-
     #First print the name of the stop
     draw.text((0, 0), name, display.BLACK, f1)
     w, h = f1.getsize(name)
-    printheight += h
 
+    gentimes(h, draw, display, times, f1, f2)
+
+    return img
+
+def gentimes(printheight, draw, display, times, f1, f2):
     #Now need to print the stops
     for time in times:
         ttl = str(time['timeToLeave'])
@@ -93,4 +64,3 @@ def genmultiimage(display, name, times):
     
 
 
-    return img
