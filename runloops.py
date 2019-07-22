@@ -62,4 +62,4 @@ def multistops(config, inky_display):
         i = i + 1
         if (i >= numstops):
             i = 0
-        time.sleep(20)        
+        time.sleep(30)        
