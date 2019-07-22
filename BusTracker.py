@@ -2,7 +2,7 @@ import json
 
 from inky import InkyPHAT
 from importconfig import importconfig 
-from singlestop import singlestop
+from runloops import singlestop, multistops
 
 def main(): 
     inky_display = InkyPHAT("black")
@@ -10,10 +10,10 @@ def main():
     
     config = importconfig()
     #Need to work out the config mode
-    if len(config['stops']) > 1: 
-        print("Not supported at this time")
+    if len(config["stops"]) > 1: 
+        multistops(config, inky_display) 
     else: 
-        config = config['stops'][0]
+        config = config["stops"][0]
         singlestop(config, inky_display) 
 
 

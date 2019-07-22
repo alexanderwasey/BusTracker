@@ -3,8 +3,7 @@ import json
 
 from inky import InkyPHAT
 from gettimes import getstopsinfo 
-from genimage import gensingleimage
-
+from genimage import gensingleimage, genmultiimage
 
 def singlestop(config, inky_display): 
     try: 
@@ -35,3 +34,32 @@ def singlestop(config, inky_display):
             oldtimes = times
     
         time.sleep(20)
+
+
+def multistops(config, inky_display):
+    
+    #Get number of stops to be displayed
+    numstops = len(config['stops'])
+    i = 0
+
+    #Don't need to store old times as will always update every 20s 
+
+    while True: 
+
+        #Get the times for this stop 
+        times = getstopsinfo(config['stops'][i]['IDs'])
+        name = config['stops'][i]['name'] 
+        #Ensure we only have 3 times  
+        if len(times) > 3: 
+            times = times[0:3]
+        
+        print('attempt to gen multi image')
+        
+        img = genmultiimage(inky_display, name, times)
+        inky_display.set_image(img)
+        inky_display.show()
+
+        i = i + 1
+        if (i >= numstops):
+            i = 0
+        time.sleep(20)        
