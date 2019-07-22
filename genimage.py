@@ -23,11 +23,13 @@ def genmultiimage(display, name, times):
     #Load in the font
     f1 = ImageFont.truetype(FredokaOne,25)
     f2 = ImageFont.truetype(FredokaOne,16)
-    w, h = f1.getsize("Test") 
 
     #First print the name of the stop
     draw.text((0, 0), name, display.BLACK, f1)
     w, h = f1.getsize(name)
+    #Underline the text
+    draw.line([(3,h),(w - 3,h)], display.BLACK, 2)
+
 
     gentimes(h, draw, display, times, f1, f2)
 
