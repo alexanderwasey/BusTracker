@@ -4,7 +4,10 @@ def acronym(input):
     #Split the output into 2 halves 
     output = input 
     initials = ""
-
+ 
+    #Ensure we are making a change each time 
+    oldoutput = output
+    
     while len(output + initials)> 14:
         #Remove the last word in the output string 
         i = len(output) - 2
@@ -18,6 +21,12 @@ def acronym(input):
             else: 
                 output = output[:-1]
                 i = i - 1
+        
+        
+        if oldoutput == (output + initials): 
+            return output + initials
+
+        oldoutput = output + initials
 
     return output + initials 
 
