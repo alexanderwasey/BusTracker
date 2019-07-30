@@ -49,8 +49,7 @@ def gentimes(printheight, draw, display, times, f1, f2):
         
         #Check destination name isn't too long
         destination = time['destination']
-        if (len(destination) > 14):
-                destination = acronym(destination)
+        destination = acronym(destination)
 
 
         f2height = printheight + int(0.25*h)
