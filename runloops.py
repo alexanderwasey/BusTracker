@@ -43,7 +43,6 @@ def multistops(config, inky_display):
     i = 0
 
     #Don't need to store old times as will always update every 20s 
-
     while True: 
 
         #Get the times for this stop 
@@ -52,14 +51,16 @@ def multistops(config, inky_display):
         #Ensure we only have 3 times  
         if len(times) > 3: 
             times = times[0:3]
+        #Only display if we have times to display 
+        if len(times) > 0:  
+            print('attempt to gen multi image')
         
-        print('attempt to gen multi image')
-        
-        img = genmultiimage(inky_display, name, times)
-        inky_display.set_image(img)
-        inky_display.show()
+            img = genmultiimage(inky_display, name, times)
+            inky_display.set_image(img)
+            inky_display.show()
 
-        i = i + 1
-        if (i >= numstops):
-            i = 0
+            i = i + 1
+            if (i >= numstops):
+                i = 0
+
         time.sleep(30)        
