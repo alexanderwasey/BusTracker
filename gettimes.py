@@ -77,8 +77,10 @@ def filterUpcomingBuses(upcomingBuses):
         busSignature['desintation'] = bus['destination']
 
         if busSignature not in alreadySeen: 
-            alreadySeen.append(busSignature)
-            nonduplicates.append(bus)
+            #Only display if the bus is arriving within 2 hours
+            if bus['timeToLeave'] <= 120:
+                alreadySeen.append(busSignature)
+                nonduplicates.append(bus)
 
 
     return nonduplicates
