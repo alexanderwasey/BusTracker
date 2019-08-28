@@ -12,8 +12,6 @@ def singlestop(config, inky_display):
         print('Error loading config')
         print(config)
         return
-
-
     oldtimes = {}
 
     #Loop for displaying times 
@@ -53,7 +51,7 @@ def multistops(config, inky_display):
             times = times[0:3]
         #Only display if we have times to display 
         if len(times) > 0:  
-            print('attempt to gen multi image')
+            print('attempt to gen multi image for: ' + name)
         
             img = genmultiimage(inky_display, name, times)
             inky_display.set_image(img)
@@ -62,5 +60,6 @@ def multistops(config, inky_display):
             i = i + 1
             if (i >= numstops):
                 i = 0
-
+        else: 
+            print('No images to display for stop: ' + name)
         time.sleep(30)        
