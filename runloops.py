@@ -56,7 +56,7 @@ def multistops(config, inky_display):
             img = genmultiimage(inky_display, name, times)
             inky_display.set_image(img)
             inky_display.show()
-            time.sleep(30)
+            time.sleep(20)
         else: 
             print('No images to display for stop: ' + name)
         i = i + 1 
