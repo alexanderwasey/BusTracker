@@ -70,17 +70,19 @@ def sortUpcomingBuses(upcomingBuses):
 def filterUpcomingBuses(upcomingBuses):
     alreadySeen = list() 
     nonduplicates = list() 
+    duplicates = list()
 
     for bus in upcomingBuses: 
         busSignature = {}
         busSignature['route'] = bus['serviceName']
         busSignature['desintation'] = bus['destination']
-
-        if busSignature not in alreadySeen: 
-            #Only display if the bus is arriving within 2 hours
-            if bus['timeToLeave'] <= 120:
+        
+        #Only show if arriving in next 2 hours 
+        if bus['timeToLeave'] <= 120:
+            if busSignature not in alreadySeen: 
                 alreadySeen.append(busSignature)
                 nonduplicates.append(bus)
-
-
-    return nonduplicates
+            else: 
+                duplicates.append(bus)
+    #Have none duplicated buses first followed by duplicated buses
+    return nonduplicates + duplicates
