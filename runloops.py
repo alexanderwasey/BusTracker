@@ -2,7 +2,7 @@ import time
 import json 
 
 from inky import InkyPHAT
-from gettimes import getstopsinfo 
+from gettimes import getstopsinfo, sortUpcomingBuses 
 from genimage import gensingleimage, genmultiimage
 
 def singlestop(config, inky_display): 
@@ -22,7 +22,7 @@ def singlestop(config, inky_display):
         #Ensure that no more than 4 times are in the list
         if len(times) > 4: 
             times = times[0:4]
-
+        times = sortUpcomingBuses(times)
         #Only update the screen if the times have changed
         if (oldtimes != times):
             print('Attempt to gen image')
@@ -49,6 +49,7 @@ def multistops(config, inky_display):
         #Ensure we only have 3 times  
         if len(times) > 3: 
             times = times[0:3]
+        times = sortUpcomingBuses(times)
         #Only display if we have times to display 
         if len(times) > 0:  
             print('attempt to gen multi image for: ' + name)
