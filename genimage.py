@@ -63,5 +63,14 @@ def gentimes(printheight, draw, display, times, f1, f2):
 
         printheight += h
     
+def nothingtoshow(display): 
+    img = Image.new("P", (display.WIDTH, display.HEIGHT))
+    draw = ImageDraw.Draw(img) 
+    f1 = ImageFont.truetype(FredokaOne,25)
+
+    #Gen the text
+    draw.text((30,30), "No buses available", display.BLACK, f1)
+
+    return img
 
 
