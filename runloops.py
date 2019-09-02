@@ -3,7 +3,7 @@ import json
 
 from inky import InkyPHAT
 from gettimes import getstopsinfo, sortUpcomingBuses 
-from genimage import gensingleimage, genmultiimage
+from genimage import gensingleimage, genmultiimage, nothingtoshow
 
 def singlestop(config, inky_display): 
     try: 
@@ -40,6 +40,9 @@ def multistops(config, inky_display):
     numstops = len(config['stops'])
     i = 0
 
+    #Need to count the number of stops not shown to therefore know if all of our stops are currently not working 
+    notshown = 0
+
     #Don't need to store old times as will always update every 20s 
     while True: 
 
@@ -57,9 +60,25 @@ def multistops(config, inky_display):
             img = genmultiimage(inky_display, name, times)
             inky_display.set_image(img)
             inky_display.show()
+            notshown = 0
             time.sleep(20)
         else: 
-            print('No images to display for stop: ' + name)
+            print('No times to display for stop: ' + name)
+            notshown += 1 
+        
+        #Check to see if all of our stops have nothing to show at the moment
+        if (notshown >= numstops): 
+            print("No stops to show")
+            notshown = 0 
+            img = nothingtoshow(inky_display)
+            inky_display.set_image(img)
+            inky_display.show() 
+            
+            #Check every 5 minutes for if we will have any new buses
+            time.sleep(300)
+        
+        
+        #Iterate to the next stop
         i = i + 1 
         if (i >= numstops):
             i = 0
