@@ -23,15 +23,22 @@ def singlestop(config, inky_display):
         if len(times) > 4: 
             times = times[0:4]
         times = sortUpcomingBuses(times)
-        #Only update the screen if the times have changed
-        if (oldtimes != times):
-            print('Attempt to gen image')
-            img = gensingleimage(inky_display, times)
+        #Only update the screen if the times have changed and we have times to show
+        if len(times) > 0:
+            if (oldtimes != times):
+                print('Attempt to gen image')
+                img = gensingleimage(inky_display, times)
+                inky_display.set_image(img)
+                inky_display.show()
+                oldtimes = times
+            time.sleep(20)
+        #If we have no times to show 
+        else:
+            print("No stops to show")
+            img = nothingtoshow(inky_display)
             inky_display.set_image(img)
-            inky_display.show()
-            oldtimes = times
-    
-        time.sleep(20)
+            inky_display.show() 
+            time.sleep(300)
 
 
 def multistops(config, inky_display):
