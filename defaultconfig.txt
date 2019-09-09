@@ -1,3 +1,7 @@
 {"stops":[
 {"IDs": [36237249], "name": "Bruntsfield North"},{"IDs": [36237252], "name": "Bruntsfield South"}
-]}
+],
+"showtime": "True" 
+}
+
+
