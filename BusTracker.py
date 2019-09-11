@@ -13,8 +13,12 @@ def main():
     if len(config["stops"]) > 1: 
         multistops(config, inky_display) 
     else: 
-        config = config["stops"][0]
-        singlestop(config, inky_display) 
+        stops = config["stops"][0]
+        if config['showtime'] == "True":
+            showtime = True
+        else: 
+            showtime = False
+        singlestop(stops, showtime, inky_display) 
 
 
 

@@ -3,9 +3,9 @@ import json
 
 from inky import InkyPHAT
 from gettimes import getstopsinfo, sortUpcomingBuses 
-from genimage import gensingleimage, genmultiimage, nothingtoshow
+from genimage import gensingleimage, genmultiimage, nothingtoshow, disptime
 
-def singlestop(config, inky_display): 
+def singlestop(config, showtime, inky_display): 
     try: 
         IDs = config['IDs']
     except:
@@ -32,14 +32,22 @@ def singlestop(config, inky_display):
                 inky_display.show()
                 oldtimes = times
             time.sleep(20)
+
+            if showtime:
+                print("Displaying time")
+                img = disptime(inky_display)
+                inky_display.set_image(img)
+                inky_display.show()
+                time.sleep(20)
+
         #If we have no times to show 
-        else:
+        elif (showtime == False):
             print("No stops to show")
             img = nothingtoshow(inky_display)
             inky_display.set_image(img)
             inky_display.show() 
             time.sleep(300)
-
+        
 
 def multistops(config, inky_display):
     
