@@ -1,3 +1,4 @@
+import datetime
 from PIL import Image, ImageFont, ImageDraw
 from inky import InkyPHAT
 from font_fredoka_one import FredokaOne
@@ -73,4 +74,12 @@ def nothingtoshow(display):
 
     return img
 
+def disptime(display):
+    img = Image.new("P", (display.WIDTH, display.HEIGHT))
+    draw = ImageDraw.Draw(img)
+    f1 = ImageFont.truetype(FredokaOne,22)
 
+    #Get the current time to display 
+    t = datetime.datetime.now().strftime("%I:%M%p")
+    draw.text((15,30), t, display.BLACK, f1)
+    return img
