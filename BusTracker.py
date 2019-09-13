@@ -9,15 +9,18 @@ def main():
     inky_display.set_border(inky_display.WHITE)
     
     config = importconfig()
-    #Need to work out the config mode
+
+    
+    if config['showtime'] == "True":
+        showtime = True
+    else: 
+        showtime = False
+
+#Need to work out the config mode
     if len(config["stops"]) > 1: 
-        multistops(config, inky_display) 
+        multistops(config, showtime, inky_display) 
     else: 
         stops = config["stops"][0]
-        if config['showtime'] == "True":
-            showtime = True
-        else: 
-            showtime = False
         singlestop(stops, showtime, inky_display) 
 
 

@@ -49,12 +49,11 @@ def singlestop(config, showtime, inky_display):
             time.sleep(300)
         
 
-def multistops(config, inky_display):
+def multistops(config, showtime, inky_display):
     
     #Get number of stops to be displayed
     numstops = len(config['stops'])
     i = 0
-
     #Need to count the number of stops not shown to therefore know if all of our stops are currently not working 
     notshown = 0
 
@@ -97,4 +96,13 @@ def multistops(config, inky_display):
         i = i + 1 
         if (i >= numstops):
             i = 0
-        
+            #If we are showing the time do it at this point 
+            if showtime: 
+                print("Displaying time")
+                img = disptime(inky_display)
+                inky_display.set_image(img)
+                inky_display.show()
+                time.sleep(10)
+
+
+
