@@ -41,12 +41,13 @@ def singlestop(config, showtime, inky_display):
                 time.sleep(20)
 
         #If we have no times to show 
-        elif (showtime == False):
+        else:
             print("No stops to show")
             img = nothingtoshow(inky_display)
             inky_display.set_image(img)
             inky_display.show() 
-            time.sleep(300)
+            time.sleep(60)
+        
         
 
 def multistops(config, showtime, inky_display):
@@ -87,9 +88,9 @@ def multistops(config, showtime, inky_display):
             img = nothingtoshow(inky_display)
             inky_display.set_image(img)
             inky_display.show() 
-            
-            #Check every 5 minutes for if we will have any new buses
-            time.sleep(300)
+           
+            #Refresh every minute to show the time
+            time.sleep(60)
         
         
         #Iterate to the next stop

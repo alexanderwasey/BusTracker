@@ -68,9 +68,14 @@ def nothingtoshow(display):
     img = Image.new("P", (display.WIDTH, display.HEIGHT))
     draw = ImageDraw.Draw(img) 
     f1 = ImageFont.truetype(FredokaOne,22)
+    f2 = ImageFont.truetype(FredokaOne,40)
 
     #Gen the text
-    draw.text((15,30), "No buses to show", display.BLACK, f1)
+    draw.text((15,0), "No buses to show", display.BLACK, f1)
+    w, h = f1.getsize("No buses to show")
+
+    t = datetime.datetime.now().strftime("%I:%M%p")
+    draw.text((15,h + 10), t, display.BLACK, f2)
 
     return img
 
