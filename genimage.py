@@ -77,7 +77,7 @@ def nothingtoshow(display):
 def disptime(display):
     img = Image.new("P", (display.WIDTH, display.HEIGHT))
     draw = ImageDraw.Draw(img)
-    f1 = ImageFont.truetype(FredokaOne,22)
+    f1 = ImageFont.truetype(FredokaOne,40)
 
     #Get the current time to display 
     t = datetime.datetime.now().strftime("%I:%M%p")
