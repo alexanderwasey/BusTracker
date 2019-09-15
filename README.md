@@ -3,6 +3,8 @@
 
 Basically clones the signs at bus stops in Edinburgh, but in your house. 
 
+Can also be used to show time
+
 Requires an InkyPHAT with all the relevant libraries installed.
 
 ###### Yes this is the nerdiest thing I have ever made xx
