@@ -76,7 +76,7 @@ def multistops(config, showtime, inky_display):
             inky_display.set_image(img)
             inky_display.show()
             notshown = 0
-            time.sleep(20)
+            time.sleep(7)
         else: 
             print('No times to display for stop: ' + name)
             notshown += 1 
@@ -103,7 +103,7 @@ def multistops(config, showtime, inky_display):
                 img = disptime(inky_display)
                 inky_display.set_image(img)
                 inky_display.show()
-                time.sleep(10)
+                time.sleep(7)
 
 
 
